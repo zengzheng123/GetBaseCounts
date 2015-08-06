@@ -1,9 +1,9 @@
 # GetBaseCounts 1.4.0
 
-#### Calculate the read depth and allele depth in the a BAM file for all the sites in a given VCF file
+##### Calculate the read depth and allele depth in the a BAM file for all the sites in a given VCF file
 
 
-Usage:
+### Usage:
 
 [REQUIRED ARGUMENTS]
 
@@ -35,10 +35,18 @@ Usage:
 	--max_block_dist        <int>           The longest spanning region (bp) of vcf chunks that can be processed at once per thread. Default 1000000
 
 
+### FAQ
+
+```
 
 
 
-#### This software uses the following library
+
+
+
+``` 
+
+### This software uses the following library
 
 bamtools https://github.com/pezmaster31/bamtools
 
