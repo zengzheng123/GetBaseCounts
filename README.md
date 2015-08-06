@@ -1,7 +1,6 @@
-# GetBaseCounts
+# GetBaseCounts 1.4.0
 
-GetBaseCounts 1.4.0
-Usage: 
+Usage:
 [REQUIRED ARGUMENTS]
 	--fasta                 <string>                        Input reference sequence file
 	--bam                   <string>                        Input bam file
