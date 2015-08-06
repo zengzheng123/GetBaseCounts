@@ -10,6 +10,7 @@ Usage:
 	--output                <string>                        Output file
 
 [OPTIONAL ARGUMENTS]
+
 	--thread                <int>                           Number of thread. Default 1
 	--sort_output                                           Sort output file by genomic position, this option requires addtional memory
 	--compress_output                                       Compress the output and write gzipped file directly
@@ -24,6 +25,8 @@ Usage:
 	--suppress_warning      <int>                           Only print a limit number of warnings for each type. Default 3
 	--help                                                  Print command line usage
 
+
 [ADVANCED ARGUMENTS, CHANGING THESE ARGUMENTS MAY SIGNIFICANTLY AFFECT MEMORY USAGE AND RUNNING TIME. USE WITH CAUTION]
+
 	--max_block_size        <int>                           The maximum number of vcf entries that can be processed at once per thread. Default 10000
 	--max_block_dist        <int>                           The longest spanning region (bp) of vcf chunks that can be processed at once per thread. Default 1000000
