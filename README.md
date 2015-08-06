@@ -1,7 +1,9 @@
 # GetBaseCounts 1.4.0
 
 Usage:
+
 [REQUIRED ARGUMENTS]
+
 	--fasta                 <string>                        Input reference sequence file
 	--bam                   <string>                        Input bam file
 	--vcf                   <string>                        Input vcf file, it needs to be sorted within each chromosome to optimize the running speed, gzipped vcf file is supported
