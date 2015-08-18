@@ -39,7 +39,31 @@ Run "make" in the program directory to compile
 	--max_block_dist        <int>           The longest spanning region (bp) of vcf chunks that can be processed at once per thread. Default 1000000
 
 
-### FAQ
+### Output Format:
+
+Tab-delimited file with the following columns:
+1  Chrom: chromosome name
+2  Pos: genomic position
+3  Ref: reference bases extracted from reference genome
+4  Alt: alternative bases from vcf file
+5  Refidx: an index number for the ref base
+6  TOTAL_depth: total read depth
+7  MAPQ_depth: depth of reads that passed MAPQ
+8  BASEQ_depth: depth of reads that passed MAPQ and BASEQ
+9  A: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'A' on the forward strand
+10 C: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'C' on the forward strand
+11 G: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'G' on the forward strand
+12 T: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'T' on the forward strand
+13 a: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'a' on the reverse strand
+14 c: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'c' on the reverse strand
+15 g: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'g' on the reverse strand
+16 t: depth of reads that passed MAPQ and BASEQ, and the alt allele is 't' on the reverse strand
+17 INS: depth of reads that passed MAPQ and BASEQ, and the alt allele is an insertion
+18 DEL: depth of reads that passed MAPQ and BASEQ, and the alt allele is an deletion
+19 ID: ID field passed from vcf file
+
+
+### FAQ:
 
 ```
 
