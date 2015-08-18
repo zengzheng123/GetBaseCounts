@@ -1,6 +1,6 @@
 # GetBaseCounts 1.4.0
 
-##### Calculate the read depth and allele depth in the a BAM file for all the sites in a given VCF file
+##### Calculate the base counts (read depth and allele depth) in a BAM file for all the sites in a given VCF file
 
 
 ### Install:
