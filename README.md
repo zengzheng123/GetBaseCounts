@@ -3,6 +3,10 @@
 ##### Calculate the read depth and allele depth in the a BAM file for all the sites in a given VCF file
 
 
+### Install:
+Run "make" in the program directory to compile
+
+
 ### Usage:
 
 [REQUIRED ARGUMENTS]
