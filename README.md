@@ -40,8 +40,7 @@ Run "make" in the program directory to compile
 
 
 ### Output Format:
-
-"""
+```
 Tab-delimited file with the following columns:
 1  Chrom: chromosome name
 2  Pos: genomic position
@@ -62,8 +61,7 @@ Tab-delimited file with the following columns:
 17 INS: depth of reads that passed MAPQ and BASEQ, and the alt allele is an insertion
 18 DEL: depth of reads that passed MAPQ and BASEQ, and the alt allele is an deletion
 19 ID: ID field passed from vcf file
-"""
-
+```
 ### FAQ:
 
 ```
