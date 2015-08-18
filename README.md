@@ -59,7 +59,7 @@ Tab-delimited file with the following columns:
 15 g: depth of reads that passed MAPQ and BASEQ, and the alt allele is 'g' on the reverse strand
 16 t: depth of reads that passed MAPQ and BASEQ, and the alt allele is 't' on the reverse strand
 17 INS: depth of reads that passed MAPQ and BASEQ, and the alt allele is an insertion
-18 DEL: depth of reads that passed MAPQ and BASEQ, and the alt allele is an deletion
+18 DEL: depth of reads that passed MAPQ and BASEQ, and the alt allele is a deletion
 19 ID: ID field passed from vcf file
 ```
 ### FAQ:
