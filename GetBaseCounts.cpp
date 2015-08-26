@@ -331,19 +331,19 @@ void GetBaseCounts()
           	}
             exit(1);
         }
-        string input_bam_index_file1 = input_bam_file.substr(0, input_bam_file.length() - 3) + "bai";
-        string input_bam_index_file2 = input_bam_file + ".bai";
-        if(!my_bam_reader.OpenIndex(input_bam_index_file1))
-        {
-            if(!my_bam_reader.OpenIndex(input_bam_index_file2))
-            {
-#pragma omp critical(output_stderr)
-                {
-                	cerr << "[ERROR] Fail to open input bam index file: " << input_bam_index_file1 << ", or " << input_bam_index_file2 << endl;
-                }
-                exit(1);
-            }
-        }
+//         string input_bam_index_file1 = input_bam_file.substr(0, input_bam_file.length() - 3) + "bai";
+//         string input_bam_index_file2 = input_bam_file + ".bai";
+//         if(!my_bam_reader.OpenIndex(input_bam_index_file1))
+//         {
+//             if(!my_bam_reader.OpenIndex(input_bam_index_file2))
+//             {
+// #pragma omp critical(output_stderr)
+//                 {
+//                 	cerr << "[ERROR] Fail to open input bam index file: " << input_bam_index_file1 << ", or " << input_bam_index_file2 << endl;
+//                 }
+//                 exit(1);
+//             }
+//         }
         
         vector<VcfEntry> vcf_block;
         map<char, int> base_count;
