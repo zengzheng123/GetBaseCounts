@@ -61,37 +61,36 @@ int warning_inconsistent_ref_allele = 0;
 
 
 
-
 void printUsage(string msg = "")
 {
-    cout << endl;
-    cout << VERSION << endl;
-    cout << "Usage: " << endl;
-    cout << "[REQUIRED ARGUMENTS]" << endl;
-    cout << "\t--fasta                 <string>                        Input reference sequence file" << endl;
-    cout << "\t--bam                   <string>                        Input bam file" << endl;
-    cout << "\t--vcf                   <string>                        Input vcf file, it needs to be sorted within each chromosome to optimize the running speed, gzipped vcf file is supported" << endl;
-    cout << "\t--output                <string>                        Output file" << endl;
-    cout << endl;
-    cout << "[OPTIONAL ARGUMENTS]" << endl;
-    cout << "\t--thread                <int>                           Number of thread. Default " << num_thread << endl;
-    cout << "\t--sort_output                                           Sort output file by genomic position, this option requires addtional memory" << endl;
-    cout << "\t--compress_output                                       Compress the output and write gzipped file directly" << endl;
-    cout << "\t--maq                   <int>                           Mapping quality threshold. Default " << mapping_quality_threshold << endl;
-    cout << "\t--baq                   <int>                           Base quality threshold, Default " << base_quality_threshold << endl;
-    cout << "\t--cov                   <int>                           Minimum coverage applied to BASEQ_depth. Default " << minimum_coverage_threshold << endl;
-    cout << "\t--filter_duplicate      [0, 1]                          Whether to filter reads that are marked as duplicate. 0=off, 1=on. Default " << filter_duplicate << endl;
-    cout << "\t--filter_improper_pair  [0, 1]                          Whether to filter reads that are marked as improperly paired. 0=off, 1=on. Default " <<  filter_improper_pair << endl;
-    cout << "\t--filter_qc_failed      [0, 1]                          Whether to filter reads that are marked as failed quality control. 0=off, 1=on. Default " << filter_qc_failed << endl;
-    cout << "\t--filter_indel          [0, 1]                          Whether to filter reads that contain indels. 0=off, 1=on. Default " << filter_indel << endl;
-    cout << "\t--filter_non_primary    [0, 1]                          Whether to filter reads that are marked as non primary alignment. Default " << filter_non_primary << endl;
-    cout << "\t--suppress_warning      <int>                           Only print a limit number of warnings for each type. Default " << max_warning_per_type << endl;
-    cout << "\t--help                                                  Print command line usage" << endl;
-    cout << endl;
-    cout << "[ADVANCED ARGUMENTS, CHANGING THESE ARGUMENTS MAY SIGNIFICANTLY AFFECT MEMORY USAGE AND RUNNING TIME. USE WITH CAUTION]" << endl;
-    cout << "\t--max_block_size        <int>                           The maximum number of vcf entries that can be processed at once per thread. Default " << maximum_vcf_block_size << endl;
-    cout << "\t--max_block_dist        <int>                           The longest spanning region (bp) of vcf chunks that can be processed at once per thread. Default " << maximum_vcf_block_distance << endl;
-    cout << endl;
+    cerr << endl;
+    cerr << VERSION << endl;
+    cerr << "Usage: " << endl;
+    cerr << "[REQUIRED ARGUMENTS]" << endl;
+    cerr << "\t--fasta                 <string>                        Input reference sequence file" << endl;
+    cerr << "\t--bam                   <string>                        Input bam file" << endl;
+    cerr << "\t--vcf                   <string>                        Input vcf file, it needs to be sorted within each chromosome to optimize the running speed, gzipped vcf file is supported" << endl;
+    cerr << "\t--output                <string>                        Output file" << endl;
+    cerr << endl;
+    cerr << "[OPTIONAL ARGUMENTS]" << endl;
+    cerr << "\t--thread                <int>                           Number of thread. Default " << num_thread << endl;
+    cerr << "\t--sort_output                                           Sort output file by genomic position, this option requires addtional memory" << endl;
+    cerr << "\t--compress_output                                       Compress the output and write gzipped file directly" << endl;
+    cerr << "\t--maq                   <int>                           Mapping quality threshold. Default " << mapping_quality_threshold << endl;
+    cerr << "\t--baq                   <int>                           Base quality threshold, Default " << base_quality_threshold << endl;
+    cerr << "\t--cov                   <int>                           Minimum coverage applied to BASEQ_depth. Default " << minimum_coverage_threshold << endl;
+    cerr << "\t--filter_duplicate      [0, 1]                          Whether to filter reads that are marked as duplicate. 0=off, 1=on. Default " << filter_duplicate << endl;
+    cerr << "\t--filter_improper_pair  [0, 1]                          Whether to filter reads that are marked as improperly paired. 0=off, 1=on. Default " <<  filter_improper_pair << endl;
+    cerr << "\t--filter_qc_failed      [0, 1]                          Whether to filter reads that are marked as failed quality control. 0=off, 1=on. Default " << filter_qc_failed << endl;
+    cerr << "\t--filter_indel          [0, 1]                          Whether to filter reads that contain indels. 0=off, 1=on. Default " << filter_indel << endl;
+    cerr << "\t--filter_non_primary    [0, 1]                          Whether to filter reads that are marked as non primary alignment. Default " << filter_non_primary << endl;
+    cerr << "\t--suppress_warning      <int>                           Only print a limit number of warnings for each type. Default " << max_warning_per_type << endl;
+    cerr << "\t--help                                                  Print command line usage" << endl;
+    cerr << endl;
+    cerr << "[ADVANCED ARGUMENTS, CHANGING THESE ARGUMENTS MAY SIGNIFICANTLY AFFECT MEMORY USAGE AND RUNNING TIME. USE WITH CAUTION]" << endl;
+    cerr << "\t--max_block_size        <int>                           The maximum number of vcf entries that can be processed at once per thread. Default " << maximum_vcf_block_size << endl;
+    cerr << "\t--max_block_dist        <int>                           The longest spanning region (bp) of vcf chunks that can be processed at once per thread. Default " << maximum_vcf_block_distance << endl;
+    cerr << endl;
     if(!msg.empty())
         cerr << msg << endl;
     exit(1);
@@ -339,12 +338,11 @@ void GetBaseCounts()
             {
 #pragma omp critical(output_stderr)
                 {
-                	cerr << "[ERROR] Fail to open input bam index file: " << input_bam_index_file1 << ", or " << input_bam_index_file2 << endl;
+                    cerr << "[ERROR] Fail to open input bam index file: " << input_bam_index_file1 << ", or " << input_bam_index_file2 << endl;
                 }
                 exit(1);
             }
         }
-        
         vector<VcfEntry> vcf_block;
         map<char, int> base_count;
         while(!my_vcf.eof())
@@ -404,17 +402,30 @@ void GetBaseCounts()
                 int refid2 = my_bam_reader.GetReferenceID(vcf_block[vcf_block.size() - 1].chrom);
                 if(refid1 == -1)
                 {
-                    cerr << "[ERROR] Could not find vcf chrom: " << vcf_block[0].chrom << " in the bam file" << endl;
+#pragma omp critical(output_stderr)
+                    {
+                        cerr << "[ERROR] Could not find vcf chrom: " << vcf_block[0].chrom << " in the bam file" << endl;
+                    }
                     exit(1);
                 }
                 if(refid2 == -1)
                 {
-                    cerr << "[ERROR] Could not find vcf chrom: " << vcf_block[vcf_block.size() - 1].chrom << " in the bam file" << endl;
+#pragma omp critical(output_stderr)
+                    {
+                        cerr << "[ERROR] Could not find vcf chrom: " << vcf_block[vcf_block.size() - 1].chrom << " in the bam file" << endl;
+                    }
                     exit(1);
                 }
                 
                 // load bam alignments for vcf chunk
-                my_bam_reader.SetRegion(refid1, vcf_block[0].pos, refid2, vcf_block[vcf_block.size() - 1].pos + 1);
+                if(!my_bam_reader.SetRegion(refid1, vcf_block[0].pos, refid2, vcf_block[vcf_block.size() - 1].pos + 1)) // random access is not possible for stdin
+                {
+#pragma omp critical(output_stderr)
+                    {
+                        cerr << "[ERROR] Could not jump to " << vcf_block[0].chrom << ":" << vcf_block[0].pos << "-" << vcf_block[vcf_block.size() - 1].chrom << ":" << vcf_block[vcf_block.size() - 1].pos + 1 << " in the BAM file" << endl;
+                    }
+                    exit(1);
+                }
                 vector<BamAlignment> bam_vec;
                 BamAlignment new_bam_alignment;
                 while(my_bam_reader.GetNextAlignment(new_bam_alignment))
